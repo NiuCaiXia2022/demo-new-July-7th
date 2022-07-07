@@ -69,13 +69,17 @@ router.beforeEach(async (to, from, next) => {
   } else {
     const userinfo = store.getters.userinfo
     if (!userinfo) {
+      // 调用 用户接口
       const response = await store.dispatch('user/getUserInfo')
       if (response) {
         const menu = store.getters.menu
         if (menu) {
           next()
         } else {
-          await store.dispatch('user/getMenu')
+          // 调用 菜单
+          const { authoritys } = await store.dispatch('user/getMenu')
+          // 解构的值  给 vuex 里面过滤 菜单数据
+          store.dispatch('permission/filterRouter', authoritys)
           next()
         }
       } else {

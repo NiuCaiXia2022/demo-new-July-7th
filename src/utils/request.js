@@ -1,7 +1,7 @@
 // axios
 import axios from 'axios'
 import store from '../store'
-console.log(store)
+
 const instance = axios.create({
   baseURL: 'https://www.markerhub.com/vueadmin-java',
   timeout: 5000
@@ -11,7 +11,7 @@ const instance = axios.create({
 instance.interceptors.request.use(function (config) {
   // console.log('请求拦截器', config)
   const token = store.getters.token
-  console.log('请求拦截器', token)
+  // console.log('请求拦截器', token)
   // 这个必须这样写。。。。  if (token) config.headers.Authorization = token
   if (token) config.headers.Authorization = token
   // 在发送请求之前做些什么

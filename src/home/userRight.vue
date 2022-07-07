@@ -1,28 +1,30 @@
 <template>
-  <div class="right-div">
-    <!-- 右边 -->
-    <div class="right-header-left">VueAdmin后台管理系统</div>
-    <div class="right-header-right">
-      <div>
-        <img :src="headerImg" />
-      </div>
-      <div class="right-one-style">
-        <el-dropdown>
-          <span class="el-dropdown-link"> test </span>
-          <template #dropdown>
-            <el-dropdown-menu>
-              <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item @click="outUser">退出</el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </div>
-      <div>视频讲解</div>
-      <div>网站</div>
-    </div>
-  </div>
   <div>
-    <router-view></router-view>
+    <div class="right-div">
+      <!-- 右边 -->
+      <div class="right-header-left">VueAdmin后台管理系统</div>
+      <div class="right-header-right">
+        <div>
+          <img :src="headerImg" />
+        </div>
+        <div class="right-one-style">
+          <el-dropdown>
+            <span class="el-dropdown-link"> test </span>
+            <template #dropdown>
+              <el-dropdown-menu>
+                <el-dropdown-item>个人中心</el-dropdown-item>
+                <el-dropdown-item @click="outUser">退出</el-dropdown-item>
+              </el-dropdown-menu>
+            </template>
+          </el-dropdown>
+        </div>
+        <div>视频讲解</div>
+        <div>网站</div>
+      </div>
+    </div>
+    <div>
+      <router-view></router-view>
+    </div>
   </div>
 </template>
 <script setup>

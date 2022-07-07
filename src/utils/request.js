@@ -1,7 +1,7 @@
 // axios
-
 import axios from 'axios'
-
+import store from '../store'
+console.log(store)
 const instance = axios.create({
   baseURL: 'https://www.markerhub.com/vueadmin-java',
   timeout: 5000
@@ -9,6 +9,11 @@ const instance = axios.create({
 
 // 添加请求拦截器
 instance.interceptors.request.use(function (config) {
+  // console.log('请求拦截器', config)
+  const token = store.getters.token
+  if (token) {
+    config.headers.Authorization = token
+  }
   // 在发送请求之前做些什么
   return config
 }, function (error) {
@@ -18,6 +23,18 @@ instance.interceptors.request.use(function (config) {
 
 // 添加响应拦截器
 instance.interceptors.response.use(function (response) {
+  // console.log('响应拦截器', response)
+  const authorization = response.headers.authorization
+  if (authorization) {
+    // 调用登录的mutations 方法 存本地
+    // console.log('响应拦截器', authorization)
+    store.commit('user/Login', authorization)
+  }
+
+  // if (response.data.code === 200) {
+  //   return response.data.headers.authorization
+  // }
+
   // 对响应数据做点什么
   return response
 }, function (error) {
@@ -25,4 +42,11 @@ instance.interceptors.response.use(function (response) {
   return Promise.reject(error)
 })
 
-export default instance
+const request = (options) => {
+  if (options.method.toLowerCase() === 'get') {
+    options.params = options.data || {}
+  }
+  return instance(options)
+}
+
+export default request

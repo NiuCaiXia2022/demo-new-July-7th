@@ -47,5 +47,4 @@ export default {
   getMenu,
   getUserInfo,
   getLogout
-
 }

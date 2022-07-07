@@ -49,7 +49,7 @@ const codeImg = ref()
 // 点击图片
 const handleCodeImg = async () => {
   const data = await Login.getCaptcha()
-  console.log(data)
+  // console.log(data)
   codeImg.value = data.data.data.captchaImg
   loginForm.token = data.data.data.token
 }

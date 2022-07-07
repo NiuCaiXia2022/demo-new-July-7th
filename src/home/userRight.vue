@@ -1,5 +1,4 @@
 <template>
-<div class="right">
   <div class="right-div">
     <!-- 右边 -->
     <div class="right-header-left">VueAdmin后台管理系统</div>
@@ -22,12 +21,9 @@
       <div>网站</div>
     </div>
   </div>
-  <div class="right-view">
-    <!-- 坑 -->
+  <div>
     <router-view></router-view>
   </div>
-</div>
-
 </template>
 <script setup>
 import { reactive } from 'vue'
@@ -46,10 +42,11 @@ const outUser = async () => {
 </script>
 <style lang="scss" scoped>
 .right-div {
-  width: 100%;
-  height: 50px;
   color: #333;
   display: flex;
+  background-color: #17b3a3;
+  line-height: 50px;
+  height: 50px;
 
   .right-header-left {
     width: 75%;

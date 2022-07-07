@@ -10,12 +10,11 @@ export default {
   children: [
     {
       path: '/sys/roles',
-      name: '',
       meta: {
         title: '角色管理',
         icon: 'el-icon-operation'
       },
-      component: () => import('../../views/users')
+      component: () => import('../../views/roles')
     }
   ]
 }

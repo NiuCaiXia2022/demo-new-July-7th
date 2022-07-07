@@ -4,7 +4,7 @@
         active-text-color="#cbcb40"
         background-color="#545c64"
         class="el-menu-vertical-demo"
-        default-active="2"
+        default-active="$route.path"
         text-color="#ccc"
         unique-opened
         router

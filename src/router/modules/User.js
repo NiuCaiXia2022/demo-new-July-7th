@@ -10,7 +10,6 @@ export default {
   children: [
     {
       path: '/sys/users',
-      name: '',
       meta: {
         title: '用户管理',
         icon: 'el-icon-operation'

@@ -1,5 +1,4 @@
 import home from '../../home'
-
 export default {
   path: '/sys',
   name: 'sys:menu:list',
@@ -16,7 +15,7 @@ export default {
         title: '菜单管理',
         icon: 'el-icon-operation'
       },
-      component: () => import('../../views/users')
+      component: () => import('../../views/menus')
     }
   ]
 }

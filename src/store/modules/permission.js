@@ -1,6 +1,6 @@
 // 导入路由表
 // publicRouter 公有路由
-import { privateRoutes, publicRouter } from '../../router'
+import { privateRoutes, publicRouter } from '../../router/index'
 // console.log(privateRoutes, 'reoute')
 console.log(publicRouter, '公有路由')
 // 路由表

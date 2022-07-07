@@ -11,12 +11,11 @@ export default {
   children: [
     {
       path: '/tool/dicts',
-      name: '',
       meta: {
         title: '数字字典',
         icon: 'el-icon-operation'
       },
-      component: () => import('../../views/users')
+      component: () => import('../../views/dicts')
     }
   ]
 }

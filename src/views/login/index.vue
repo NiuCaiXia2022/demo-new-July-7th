@@ -76,16 +76,18 @@ const handleLoginSubmit = async () => {
 </script>
 <style lang="scss" scoped>
 .login-content {
-  width: 500px;
+  width: 390px;
   height: 500px;
   margin: 100px auto;
   .codeimg {
-    width: 200px;
+    width: 160px;
+    margin-left: 5px;
   }
   .img {
-    width: 200px;
+    width: 150px;
     height: 30px;
-    background-color: red;
+    margin-left: 7px;
+    border-radius: 5px;
   }
 }
 </style>

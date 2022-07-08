@@ -1,6 +1,7 @@
 // axios
 import axios from 'axios'
 import store from '../store'
+import router from '../router'
 
 const instance = axios.create({
   baseURL: 'https://www.markerhub.com/vueadmin-java',
@@ -34,9 +35,13 @@ instance.interceptors.response.use(function (response) {
     store.commit('user/Login', authorization)
   }
 
-  // if (response.data.code === 200) {
-  //   return response.data.headers.authorization
-  // }
+  // touken 过期
+  if (response.data.code === 401) {
+    store.commit('Login', '')
+    store.commit('userInfo', '')
+    store.commit('menuList', '')
+    router.push('/login')
+  }
 
   // 对响应数据做点什么
   return response

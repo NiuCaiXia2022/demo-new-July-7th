@@ -22,6 +22,10 @@ export default {
     // 菜单
     menuList(state, menu) {
       state.menu = menu
+    },
+    // 退出登录
+    outLogin(state) {
+      storage.removeItem('token')
     }
   },
   actions: {
@@ -47,6 +51,13 @@ export default {
       // console.log('vuex菜单', response.data.data)
       commit('menuList', response.data.data)
       return response.data.data
+    },
+    //  退出登录
+    async outUserLogin({ commit }) {
+      await Login.getLogout()
+      commit('outLogin', '')
+      commit('Login', '')
+      commit('menuList', '')
     }
   }
 }

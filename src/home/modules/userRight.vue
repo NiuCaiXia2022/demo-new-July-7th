@@ -5,15 +5,19 @@
 
     <div class="right-header-right">
       <div>
-        <img :src="headerImg" />
+        <img class="userImg" :src="store.getters.userinfo.data.data.avatar" />
       </div>
       <div class="right-one-style">
-        <el-dropdown>
-          <span class="el-dropdown-link"> test </span>
+        <el-dropdown @command="handleCommand">
+          <span class="el-dropdown-link">
+            {{ $store.getters.userinfo.data.data.username || '' }}
+          </span>
           <template #dropdown>
             <el-dropdown-menu>
               <el-dropdown-item>个人中心</el-dropdown-item>
-              <el-dropdown-item @click="outUser">退出</el-dropdown-item>
+              <el-dropdown-item command="out" @click="outUser"
+                >退出</el-dropdown-item
+              >
             </el-dropdown-menu>
           </template>
         </el-dropdown>
@@ -24,30 +28,39 @@
   </div>
 </template>
 <script setup>
-import { reactive } from 'vue'
 import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
-const headerImg = reactive()
 const store = useStore()
-const route = useRouter()
+const router = useRouter()
+console.log(store.getters.userinfo.data.data.username, '用户信息')
+const handleCommand = (command) => {
+  // console.log(command)
+  if (command === 'out') return outUser()
+}
 // 退出登录
 const outUser = async () => {
-  const response = await store.dispatch('user/outUserLogin')
-  console.log(response)
-  // route.push('/login')
-  console.log(route.push('/login'))
+  console.log(123)
+  await store.dispatch('user/outUserLogin')
+  router.push('/login')
+  // console.log(route.push('/login'))
 }
 </script>
 <style lang="scss" scoped>
 .right-div {
   color: #333;
   display: flex;
+  height: 50px;
+  line-height: 50px;
+  width: 100%;
   .right-header-left {
     text-align: center;
     font-size: 8px;
     font-weight: 800;
+    width: 600px;
+    text-align: center;
   }
   .right-header-right {
+    float: right;
     width: 200px;
     display: flex;
     & > div {
@@ -59,6 +72,12 @@ const outUser = async () => {
     }
     .right-one-style {
       margin-top: 17px;
+    }
+    .userImg {
+      margin-top: 5px;
+      width: 40px;
+      height: 40px;
+      border-radius: 50px;
     }
   }
 }

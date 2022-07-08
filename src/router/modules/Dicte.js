@@ -1,11 +1,11 @@
-import home from '../../home/index'
+import home from '../../home'
 
 export default {
   path: '/tool',
   name: 'sys:dict:list',
   redirect: '/tool/dicts',
   meta: {
-    title: '系统管理',
+    title: '系统工具',
     icon: 'el-icon-operation'
   },
   component: home,

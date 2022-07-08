@@ -11,7 +11,6 @@ export default {
   children: [
     {
       path: '/sys/menus',
-      name: '',
       meta: {
         title: '菜单管理',
         icon: 'el-icon-operation'

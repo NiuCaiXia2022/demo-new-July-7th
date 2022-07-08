@@ -67,7 +67,7 @@ const handleLoginSubmit = async () => {
     if (valid) {
       // console.log('点击登录', loginForm)
       await store.dispatch('user/getLogin', loginForm)
-      router.push('/')
+      router.push('/index')
     } else {
       console.log('error')
     }

@@ -1,8 +1,6 @@
 // 导入路由表
 // publicRouter 公有路由
-import router, { privateRoutes, publicRouter } from '../../router/index'
-// console.log(privateRoutes, 'reoute')
-// console.log(publicRouter, '公有路由')
+import { privateRoutes, publicRouter } from '../../router/index'
 // 路由表
 export default {
   namespaced: true,
@@ -20,15 +18,15 @@ export default {
     // 过滤路由
     filterRouter({ commit }, menuList) {
       // console.log(publicRouter, '公有路由')
-      console.log('总数据-过滤路由', menuList)
+      // console.log('总数据-过滤路由', menuList)
       const resRoute = []
       //   console.log(privateRoutes)
       // 循环私有路由表 跟接口的路由信息 做筛选
-      privateRoutes.forEach(item => {
+      menuList.forEach(item => {
         // console.log('item-过滤路由', item)
         // 筛选出 name 一样的
-        const data = menuList.filter(routes => {
-          return item.name === routes
+        const data = privateRoutes.filter(routes => {
+          return item === routes.name
         })
         // console.log('私有路由表-item', data)
         // resRoute.push(data) // 在push给新的数组  拿到的是数组的数组 )[Array(1), Array(1), Array(1), Array(1)]
@@ -36,7 +34,7 @@ export default {
         // console.log('私有路由表-all', resRoute)
       })
       // 添加路由重定向
-      router.push({
+      resRoute.push({
         path: '/:catchAll(.*)', // 匹配正则
         redirect: '/404'
       })

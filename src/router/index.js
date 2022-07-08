@@ -3,7 +3,6 @@ import Dicte from './modules/Dicte'
 import Menu from './modules/Menu'
 import Roles from './modules/Roles'
 import User from './modules/User'
-import home from '../home/index'
 
 // 路由要导出去   不然拿不到数据
 export const publicRouter = [
@@ -14,9 +13,8 @@ export const publicRouter = [
   },
   {
     path: '/',
-    name: 'home',
-    // redirect: '/index',
-    component: home,
+    redirect: '/index',
+    component: () => import('../home'),
     children: [
       {
         path: '/index',
@@ -25,7 +23,8 @@ export const publicRouter = [
           title: '首页',
           icon: 'el-icon-s-home'
         },
-        component: () => import('../home')
+        // component: () => import('../views/home') 路由匹配不正确 导致出现俩坑
+        component: () => import('../views/index')
       }
     ]
   },
@@ -46,7 +45,9 @@ export const privateRoutes = [
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: publicRouter
+  routes: [...publicRouter]
 })
+
+// console.log(router.getRoutes())
 
 export default router

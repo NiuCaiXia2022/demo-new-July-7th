@@ -2,7 +2,8 @@
   <div class="user-login">
     <el-container>
       <el-aside width="200px">
-        <user-left></user-left>
+        <!-- <user-left></user-left> -->
+        <UserLeft></UserLeft>
       </el-aside>
 
       <el-container>
@@ -18,9 +19,9 @@
   </div>
 </template>
 <script setup>
-import userLeft from './modules/userLeft'
-import userRight from './modules/userRight'
-import userBottom from './modules/userBottom'
+import UserLeft from './modules/userLeft'
+import UserRight from './modules/userRight'
+import UserBottom from './modules/userBottom'
 </script>
 <style lang="scss" scoped>
 .el-aside {
@@ -31,6 +32,9 @@ import userBottom from './modules/userBottom'
 .el-header {
   background-color: #17b3a3;
   height: 50px;
+}
+.user-left {
+  width: 200px;
 }
 // .el-main {
 // }

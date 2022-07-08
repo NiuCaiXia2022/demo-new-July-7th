@@ -11,7 +11,7 @@ export default {
   mutations: {
     // 登录  这个是在响应拦截器 调用
     Login(state, token) {
-      console.log('登录', token)
+      // console.log('登录', token)
       state.token = token
       storage.setItem('token', token)
     },
@@ -38,15 +38,15 @@ export default {
       // const menu = await Login.getMenu()// 菜单
       commit('userInfo', res)
       // commit('menuList', menu)
-      console.log('用户信息vuex', res)
+      // console.log('用户信息vuex', res)
       return res
     },
     //   在权鉴里调用
     async getMenu({ commit }) {
       const response = await Login.getMenu()
-      console.log('vuex菜单', response)
-      commit('menuList', response)
-      return response
+      // console.log('vuex菜单', response.data.data)
+      commit('menuList', response.data.data)
+      return response.data.data
     }
   }
 }

@@ -1,30 +1,28 @@
 <template>
   <div class="login">
     <div class="login-content">
-    <!-- 登录 -->
+      <!-- 登录 -->
 
-     <el-form
-    ref="loginRuleFormRef"
-    :model="loginForm"
-    :rules="rules"
-    status-icon
-  >
-    <el-form-item label="用户名" prop="username">
-      <el-input v-model.trim="loginForm.username" />
-    </el-form-item>
-    <el-form-item label="密码" prop="password">
-      <el-input v-model.trim="loginForm.password" type="password" />
-    </el-form-item>
-    <el-form-item label="验证码" prop="code">
-      <el-input v-model.trim="loginForm.code" class="codeimg" />
-      <img :src="codeImg" class="img" @click="handleCodeImg">
-    </el-form-item>
-    <el-form-item>
-      <el-button type="primary" @click="handleLoginSubmit"
-        >提交</el-button
+      <el-form
+        ref="loginRuleFormRef"
+        :model="loginForm"
+        :rules="rules"
+        status-icon
       >
-    </el-form-item>
-  </el-form>
+        <el-form-item label="用户名" prop="username">
+          <el-input v-model.trim="loginForm.username" />
+        </el-form-item>
+        <el-form-item label="密码" prop="password">
+          <el-input v-model.trim="loginForm.password" type="password" />
+        </el-form-item>
+        <el-form-item label="验证码" prop="code">
+          <el-input v-model.trim="loginForm.code" class="codeimg" />
+          <img :src="codeImg" class="img" @click="handleCodeImg" />
+        </el-form-item>
+        <el-form-item>
+          <el-button type="primary" @click="handleLoginSubmit">提交</el-button>
+        </el-form-item>
+      </el-form>
     </div>
   </div>
 </template>
@@ -69,7 +67,7 @@ const handleLoginSubmit = async () => {
     if (valid) {
       // console.log('点击登录', loginForm)
       await store.dispatch('user/getLogin', loginForm)
-      router.push('/index')
+      router.push('/')
     } else {
       console.log('error')
     }

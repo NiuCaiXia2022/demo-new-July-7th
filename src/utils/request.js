@@ -14,6 +14,9 @@ instance.interceptors.request.use(function (config) {
   // console.log('请求拦截器', token)
   // 这个必须这样写。。。。  if (token) config.headers.Authorization = token
   if (token) config.headers.Authorization = token
+  // if (token) {
+  //   config.headers.Authorization = token
+  // }
   // 在发送请求之前做些什么
   return config
 }, function (error) {

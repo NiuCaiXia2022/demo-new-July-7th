@@ -5,27 +5,29 @@ import Roles from './modules/Roles'
 import User from './modules/User'
 import home from '../home/index'
 
-const publicRouter = [
+// 路由要导出去   不然拿不到数据
+export const publicRouter = [
   {
     path: '/login',
     name: 'login',
     component: () => import('../views/login')
   },
   {
-    path: '/index',
+    path: '/',
     name: 'home',
-    component: home
-    // children: [
-    //   {
-    //     path: '/index',
-    //     name: 'index',
-    //     meta: {
-    //       title: '首页',
-    //       icon: 'el-icon-s-home'
-    //     },
-    //     component: () => import('../home')
-    //   }
-    // ]
+    // redirect: '/index',
+    component: home,
+    children: [
+      {
+        path: '/index',
+        name: 'index',
+        meta: {
+          title: '首页',
+          icon: 'el-icon-s-home'
+        },
+        component: () => import('../home')
+      }
+    ]
   },
   {
     path: '/401',
@@ -37,13 +39,14 @@ const publicRouter = [
   }
 ]
 
-const privateRoutes = [
+// 路由要导出去   不然拿不到数据
+export const privateRoutes = [
   Dicte, Menu, Roles, User
 ]
 
 const router = createRouter({
   history: createWebHashHistory(),
-  routes: [...publicRouter, ...privateRoutes]
+  routes: publicRouter
 })
 
 export default router

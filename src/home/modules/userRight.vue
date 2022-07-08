@@ -32,7 +32,7 @@ import { useStore } from 'vuex'
 import { useRouter } from 'vue-router'
 const store = useStore()
 const router = useRouter()
-console.log(store.getters.userinfo.data.data.username, '用户信息')
+// console.log(store.getters.userinfo.data.data.username, '用户信息')
 const handleCommand = (command) => {
   // console.log(command)
   if (command === 'out') return outUser()
@@ -56,7 +56,7 @@ const outUser = async () => {
     text-align: center;
     font-size: 8px;
     font-weight: 800;
-    width: 600px;
+    width: 820px;
     text-align: center;
   }
   .right-header-right {

@@ -11,8 +11,9 @@
           <user-right></user-right>
         </el-header>
 
-        <el-main>
-          <user-bottom></user-bottom>
+        <el-main style="padding: 0">
+          <TagsView style="padding: 0"></TagsView>
+          <user-bottom style="padding: 20px"></user-bottom>
         </el-main>
       </el-container>
     </el-container>
@@ -22,6 +23,7 @@
 import UserLeft from './modules/userLeft'
 import UserRight from './modules/userRight'
 import UserBottom from './modules/userBottom'
+import TagsView from '../components/TagsView'
 </script>
 <style lang="scss" scoped>
 .el-aside {
@@ -36,6 +38,7 @@ import UserBottom from './modules/userBottom'
 .user-left {
   width: 200px;
 }
-// .el-main {
-// }
+.user-bottom {
+  padding: 0 20px;
+}
 </style>

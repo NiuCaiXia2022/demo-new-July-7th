@@ -3,5 +3,6 @@
 export default {
   token: (state) => state.user.token,
   userinfo: state => state.user.userinfo,
-  menu: state => state.user.menu
+  menu: state => state.user.menu,
+  tagsview: state => state.tagsview.tags
 }

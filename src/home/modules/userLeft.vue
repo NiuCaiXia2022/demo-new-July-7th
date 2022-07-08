@@ -32,7 +32,7 @@ const menuList = computed(() => {
   // 所有路由信息  去空 children
   return filterMenuData(generateMenus(routes))
 })
-console.log(menuList) // 数据在value 里面
+// console.log(menuList) // 数据在value 里面
 </script>
 <style lang="scss" scoped>
 .el-menu {
